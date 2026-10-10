@@ -18,7 +18,7 @@
 %if !0%{?rhel}
 %global with_r300 1
 %global with_r600 1
-%global with_opencl 1
+%global with_opencl 0
 %global with_va 1
 %endif
 %if !0%{?rhel} || 0%{?rhel} >= 9
