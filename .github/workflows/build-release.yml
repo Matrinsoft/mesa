@@ -79,6 +79,9 @@ jobs:
               if [ -n "$VENDOR_DEFINE" ]; then
                 EXTRA_ARGS+=(--define "$VENDOR_DEFINE")
               fi
+              if [ "$SPEC" = "mesa.spec" ]; then
+                EXTRA_ARGS+=(--define with_nvk 0)
+              fi
 
               # Build Source0 from this checkout so local source changes are included.
               SOURCE0_URL=$(spectool -l "$SPEC" 2>/dev/null | awk "\$1 == \"Source0:\" {print \$2; exit}")
