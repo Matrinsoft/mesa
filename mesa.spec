@@ -21,15 +21,21 @@
 %global with_opencl 0
 %global with_va 1
 %endif
+# NOTE (LingmoOS build): with_nvk is intentionally left UNDEFINED when NVK is
+# disabled. The meson option list below tests for macro *definition*
+# (%{?with_nvk:,nouveau}), so defining it as 0 still enables the Rust based NVK
+# driver, which then fails because the rust toolchain is not installed.
 %if !0%{?rhel} || 0%{?rhel} >= 9
-%global with_nvk 0
 %endif
 %global base_vulkan %{?with_vulkan_hw:,amd}%{!?with_vulkan_hw:%{nil}}
 %endif
 
+# NOTE (LingmoOS build): with_teflon is left UNDEFINED for the same reason as
+# with_nvk - %{?with_teflon:,ethosu,rocket} and
+# -Dteflon=%{?with_teflon:true}%{!?with_teflon:false} only check whether the
+# macro is defined. Teflon additionally needs rust, flatbuffers and xtensor.
 %ifarch aarch64 x86_64
 %if !0%{?rhel}
-%global with_teflon 0
 %endif
 %endif
 
