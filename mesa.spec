@@ -22,7 +22,7 @@
 %global with_va 1
 %endif
 %if !0%{?rhel} || 0%{?rhel} >= 9
-%global with_nvk %{with_vulkan_hw}
+%global with_nvk 0
 %endif
 %global base_vulkan %{?with_vulkan_hw:,amd}%{!?with_vulkan_hw:%{nil}}
 %endif
