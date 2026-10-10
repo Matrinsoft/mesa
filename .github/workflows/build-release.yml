@@ -80,7 +80,7 @@ jobs:
                 EXTRA_ARGS+=(--define "$VENDOR_DEFINE")
               fi
               if [ "$SPEC" = "mesa.spec" ]; then
-                EXTRA_ARGS+=(--define with_nvk 0)
+                EXTRA_ARGS+=(--define "with_nvk 0")
               fi
 
               # Build Source0 from this checkout so local source changes are included.
